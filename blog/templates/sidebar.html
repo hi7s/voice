@@ -1,0 +1,89 @@
+{% load myfilter %}
+<div class="b-categories-filter">
+    <h4 class="f-primary-b b-h4-special f-h4-special--gray f-h4-special"><i class="fa fa-th-list"></i>分类</h4>
+    <ul>
+        {% for category in categories %}
+            <li>
+                <a class="f-categories-filter_name" href="/category/{{ category.category__slug }}/">
+                    {% if category.category__icon %}
+                        <i class="fa {{ category.category__icon }}"></i> {{ category.category__name }}
+                    {% else %}
+                        <i class="fa fa-plus"></i> {{ category.category__name }}
+                    {% endif %}
+                </a>
+                <span class="b-categories-filter_count f-categories-filter_count">{{ category.id__count }}</span>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+<div class="b-categories-filter">
+    <h4 class="f-primary-b b-h4-special f-h4-special--gray f-h4-special"><i class="fa fa-tags"></i>热门标签</h4>
+    <div>
+        {% for tag in tags %}
+            <a class="f-tag b-tag" href="/tag/{{ tag.tag__slug }}/">
+                {{ tag.tag__name }}（{{ tag.post_id__count }}）
+            </a>
+        {% endfor %}
+    </div>
+</div>
+<div class="b-categories-filter">
+    <h4 class="f-primary-b b-h4-special f-h4-special--gray f-h4-special"><i class="fa fa-archive"></i>归档</h4>
+    <ul>
+        {% for archive in archives %}
+            <li>
+                <a class="f-categories-filter_name" href="/archive/{{ archive.year }}/{{ archive.month }}/">
+                    <i class="fa fa-calendar"></i> {{ archive.year }}年{{ archive.month }}月
+                </a>
+                <span class="b-categories-filter_count f-categories-filter_count">{{ archive.id__count }}</span>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+<div class="b-categories-filter">
+    <h4 class="f-primary-b b-h4-special f-h4-special--gray f-h4-special"><i class="fa fa-clock-o"></i>最新发布</h4>
+    <div class="b-blog-short-post b-blog-short-post--img-hover-bordered b-blog-short-post--w-img f-blog-short-post--w-img row">
+        <div class="b-blog-short-post b-blog-short-post--img-hover-bordered b-blog-short-post--w-img f-blog-short-post--w-img row">
+            {% for post in recent_posts %}
+                <div class="b-blog-short-post--popular col-md-12  col-xs-12 f-primary-b">
+                    <div class="b-blog-short-post__item_img" hidden>
+                        <i class="fa fa-newspaper-o fa-3x"></i>
+                    </div>
+                    <div class="b-remaining">
+                        <div class="b-blog-short-post__item_text f-blog-short-post__item_text">
+                            <a href="/article/{{ post.id }}/">
+                                <i class="fa fa-newspaper-o"></i>{{ post.title }}
+                                {% if post.author %} - {{ post.author }} {% endif %}
+                            </a>
+                        </div>
+                        <div class="b-blog-short-post__item_date f-blog-short-post__item_date f-primary-it">
+                            {{ post.post_date }}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<div class="b-categories-filter">
+    <h4 class="f-primary-b b-h4-special f-h4-special--gray f-h4-special"><i class="fa fa-external-link"></i>友情链接</h4>
+    <div class="b-blog-short-post b-blog-short-post--img-hover-bordered b-blog-short-post--w-img f-blog-short-post--w-img row">
+        <div class="b-blog-short-post b-blog-short-post--img-hover-bordered b-blog-short-post--w-img f-blog-short-post--w-img row">
+            {% for link in links %}
+                <div class="b-blog-short-post--popular col-md-12  col-xs-12 f-primary-b">
+                    <div class="b-blog-short-post__item_img">
+                        <a href="#"></a>
+                    </div>
+                    <div class="b-remaining">
+                        <div class="b-blog-short-post__item_text f-blog-short-post__item_text">
+                            {% if link.target %}
+                                <a href="{{ link.url }}" target="{{ link.target }}"> {{ link.name }}</a>
+                            {% else %}
+                                <a href="{{ link.url }}"> {{ link.name }}</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

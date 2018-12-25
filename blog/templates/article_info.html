@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block head %}
+{% endblock %}
+{% block body %}
+    <div class="info">
+        <h1 class="title">
+            {{ post.title }} {% if post.author %} - {{ post.author }} {% endif %}
+        </h1>
+        <div class="meta">
+            <a href="/category/{{ post.category.slug }}/"><i class="fa fa-plus"></i> {{ post.category.name }}</a>
+            &nbsp;
+            <i class="fa fa-calendar"></i> {{ post.post_date }}
+        </div>
+        <div class="content">{{ post.content | safe }}</div>
+    </div>
+    <div class="nearby">
+        {% if prev_post %}
+            <p>上一篇 <a href="/article/{{ prev_post.id }}/"> {{ prev_post.title }}</a></p>
+        {% endif %}
+        {% if next_post %}
+            <p>下一篇 <a href="/article/{{ next_post.id }}/"> {{ next_post.title }}</a></p>
+        {% endif %}
+    </div>
+{% endblock %}
+{% load myfilter %}

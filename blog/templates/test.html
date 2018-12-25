@@ -1,0 +1,23 @@
+
+{{test}}
+  cats=================
+	{{cats}}
+  <br>
+  links================
+  {{links}}
+  <br>
+  -------------------------
+  <br>
+  {%for x,y in links.items%}
+    {{x}} <br>
+    {%for l in y%}
+      <a href="" >{{l}}</a><br>
+    {%endfor%}
+    <br>
+
+  {%endfor%}
+  comment_content:{{form.content.errors}}
+  comment_author:{{form.author.errors}}
+  comment_author_email:{{form.email.errors}}
+
+</body>

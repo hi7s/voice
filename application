@@ -1,0 +1,23 @@
+#!/usr/bin/env python
+
+import os
+import sys
+
+os.environ['DJANGO_SETTINGS_MODULE'] = 'mysite.settings'
+
+if 'OPENSHIFT_REPO_DIR' in os.environ:
+    sys.path.append(os.path.join(os.environ['OPENSHIFT_REPO_DIR'], 'wsgi', 'mysite'))
+    virtenv = os.environ['APPDIR'] + '/virtenv/'
+    os.environ['PYTHON_EGG_CACHE'] = os.path.join(virtenv, 'lib/python2.7/site-packages')
+    virtualenv = os.path.join(virtenv, 'bin/activate_this.py')
+    try:
+        execfile(virtualenv, dict(__file__=virtualenv))
+    except:
+        pass
+else:
+    project = os.path.dirname(__file__)
+    sys.path.append(os.path.join(project, 'mysite'))
+
+from django.core.wsgi import get_wsgi_application
+
+application = get_wsgi_application()

@@ -1,0 +1,99 @@
+body {
+    line-height: 1.6875rem;
+}
+
+.info {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.info > .title > a {
+    text-decoration: none;
+}
+
+.info > .title {
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 28px;
+    margin: 0;
+    padding: 15px 0 16px;
+}
+
+.info > .meta {
+    font-size: 12px;
+    line-height: 14px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.info > .meta > a {
+    text-decoration: none;
+}
+
+.info > .content > a {
+    text-decoration: none;
+}
+
+.info > .content > p {
+    word-wrap: break-word;
+    margin-bottom: 20px;
+    text-align: justify;
+    color: #3f4146;
+}
+
+.nearby {
+}
+
+.nearby > p {
+}
+
+.nearby > p > a {
+    text-decoration: none;
+}
+
+footer {
+    background: #f4f4f4;
+    color: #9b9ea3;
+    font-size: 12px;
+    padding: 20px 0;
+    text-align: center;
+    line-height: 12px;
+    position: relative;
+}
+
+footer > .copyright {
+    font-size: 12px;
+}
+
+.sidebar dl {
+    clear: both;
+}
+
+.sidebar dl dt {
+    line-height: 50px;
+}
+
+.sidebar dl dd {
+    line-height: 30px;
+    margin-right: 10px;
+}
+
+.sidebar dl dd a {
+    text-decoration: none;
+}
+
+.sidebar dl dd a:hover {
+}
+
+.sidebar dl.tags {
+    display: inline-block;
+}
+
+.sidebar dl.tags dd {
+    float: left;
+}
+
+.stage {
+    margin-bottom: 15px;
+}

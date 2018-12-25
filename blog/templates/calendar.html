@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block head %}
+    <style>
+        .cal a {
+            display: inline-block;
+        }
+
+        .cal a:hover {
+            text-decoration: none;
+
+        }
+    </style>
+{% endblock head %}
+{% block body %}
+    {% regroup months by year as year %}
+    {% for year, year_months in year %}
+        <h3>
+            <a href="/archive/{{ year }}/">{{ year }} 年</a>
+        </h3>
+        <div class="cal">
+            {% for month in year_months|dictsort:'month' %}
+                <a href="/archive/{{ month.year }}/{{ month.month }}/">
+                    <i class="fa fa-calendar"></i>
+                    {{ month.year }}年{{ month.month }}月（{{ month.id__count }}）
+                </a>
+            {% endfor %}
+        </div>
+    {% endfor %}
+{% endblock %}

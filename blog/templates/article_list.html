@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block head %}
+{% endblock %}
+{% block body %}
+    {% for post in posts %}
+        <div class="info">
+            <h1 class="title">
+                <a href="/article/{{ post.id }}/">
+                    {{ post.title }} {% if post.author %} - {{ post.author }} {% endif %}
+                </a>
+            </h1>
+            <div class="meta">
+                <a href="/category/{{ post.category.slug }}/"><i class="fa fa-plus"></i> {{ post.category.name }}</a>
+                &nbsp;
+                <i class="fa fa-calendar"></i> {{ post.post_date }}
+            </div>
+            <div class="content">
+                {{ post.content | striptags | slice:'200' }}...
+                <a href="/article/{{ post.id }}/">查看全部</a>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
+{% load myfilter %}

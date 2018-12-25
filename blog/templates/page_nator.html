@@ -1,0 +1,25 @@
+<div class="b-pagination f-pagination">
+    <ul>
+        {% if page.has_previous %}
+            <li class="hidden-xs"><a href="?page=1">首页</a></li>
+            <li><a href="?page={{ posts.previous_page_number }}">上一页</a></li>
+        {% else %}
+            <li class="hidden-xs"><a>首页</a></li>
+            <li><a>上一页</a></li>
+        {% endif %}
+        {% for i in page.paginator.page_range_ext %}
+            {% if i == page.number %}
+                <li class="is-active-pagination"><a href="#">{{ i }}</a></li>
+            {% else %}
+                <li><a href="?page={{ i }}">{{ i }}</a></li>
+            {% endif %}
+        {% endfor %}
+        {% if page.has_next %}
+            <li><a href="?page={{ page.next_page_number }}">下一页</a></li>
+            <li class="hidden-xs"><a href="?page={{ page.paginator.num_pages }}">尾页</a></li>
+        {% else %}
+            <li><a>下一页</a></li>
+            <li class="hidden-xs"><a>尾页</a></li>
+        {% endif %}
+    </ul>
+</div>

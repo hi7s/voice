@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block head %}
+{% endblock %}
+{% block body %}
+    <div class="info">
+        <h1 class="title">
+            {{ page.title }} {% if page.author %} - {{ page.author }} {% endif %}
+        </h1>
+        <div class="meta">
+            <i class="fa fa-calendar"></i> {{ page.created_at }}
+        </div>
+        <div class="content">{{ page.content | safe }}</div>
+    </div>
+{% endblock %}
+{% load myfilter %}
